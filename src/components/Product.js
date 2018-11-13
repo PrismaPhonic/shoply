@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, Button
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  Button
 } from 'reactstrap';
 
 // Product card displays the product, and has two buttons, one that
@@ -22,6 +26,7 @@ class Product extends Component {
     this.props.removeProduct(this.props.data.id);
   }
 
+  //if route is /cart then the add button will not be displayed
   render() {
     const { name, price, image_url, id } = this.props.data;
     return (
@@ -30,7 +35,9 @@ class Product extends Component {
         <CardBody>
           <CardTitle>{name}</CardTitle>
           <CardText>{`Price: ${price}`}</CardText>
-          <Button onClick={this.addProduct}>Add To Cart</Button>
+          {this.props.addProduct ? (
+            <Button onClick={this.addProduct}>Add To Cart</Button>
+          ) : null}
           <Button onClick={this.removeProduct}>Remove From Cart</Button>
         </CardBody>
       </Card>
