@@ -25,7 +25,7 @@ class ProductList extends Component {
           );
         })}
         <ListGroupItem>
-          <h3>Cart Total: {this.props.cart.length}</h3>
+          <h3>Cart Total: {this.props.cartSize}</h3>
         </ListGroupItem>
       </ListGroup>
     );
@@ -35,7 +35,7 @@ class ProductList extends Component {
 function mapStateToProps(state) {
   return {
     items: state.items,
-    cart: state.cart
+    cartSize: state.cart.length
   };
 }
 
