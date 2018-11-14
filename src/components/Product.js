@@ -34,11 +34,15 @@ class Product extends Component {
         <CardImg top width="100%" src={image_url} />
         <CardBody>
           <CardTitle>{name}</CardTitle>
-          <CardText>{`Price: ${price}`}</CardText>
-          {this.props.addProduct ? (
-            <Button onClick={this.addProduct}>Add To Cart</Button>
-          ) : null}
-          <Button onClick={this.removeProduct}>Remove From Cart</Button>
+          <CardText>
+            {`Price: ${price}`}
+            {this.props.renderQuantity ?
+              <p>Quantity: {this.props.data.quantity}</p> :
+              null
+            }
+          </CardText>
+          <Button onClick={this.addProduct}>Add Product</Button>
+          <Button onClick={this.removeProduct}>Remove Product</Button>
         </CardBody>
       </Card>
     );

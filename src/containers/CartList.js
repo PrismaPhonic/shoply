@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { removeProduct } from '../actions';
+import { addProduct, removeProduct } from '../actions';
 import Product from '../components/Product';
 import { connect } from 'react-redux';
 import './cartList.css';
@@ -17,12 +17,16 @@ class CartList extends Component {
               <Product
                 key={product.id}
                 data={product}
+                renderQuantity={true}
                 removeProduct={this.props.removeProduct}
-                addProduct={false}
+                addProduct={this.props.addProduct}
               />
             </ListGroupItem>
           );
         })}
+        <ListGroupItem>
+          <h3>Cart Total: {this.props.cartTotal}</h3>
+        </ListGroupItem>
       </ListGroup>
     );
   }
@@ -30,11 +34,14 @@ class CartList extends Component {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
+    cartTotal: state.cart
+      .map(product => product.price * product.quantity)
+      .reduce((a, b) => a + b, 0)
   };
 }
 
 export default connect(
   mapStateToProps,
-  { removeProduct }
+  { addProduct, removeProduct }
 )(CartList);

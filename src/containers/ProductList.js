@@ -25,7 +25,7 @@ class ProductList extends Component {
           );
         })}
         <ListGroupItem>
-          <h3>Cart Total: {this.props.cartSize}</h3>
+          <h3>Products In Cart: {this.props.cartSize}</h3>
         </ListGroupItem>
       </ListGroup>
     );
