@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import ProductList from '../containers/ProductList';
+import Routes from './Routes';
 import './App.css';
+import NavBar from './ShoplyNavBar';
 
 class App extends Component {
   render() {
     return (
       <Container className="App">
-        <ProductList />
+        <NavBar />
+        <Routes />
       </Container>
     );
   }
